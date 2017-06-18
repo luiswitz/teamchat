@@ -1,24 +1,12 @@
-# README
+# TEAM CHAT
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This project is a Slack like app developed in Ruby on Rails.
+Uses Action Cable to send and receive messages between users and channels.
 
-Things you may want to cover:
+## Stack
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- Ruby on Rails
+- Docker
+- Redis
+- Postgresql
+- Action Cable
