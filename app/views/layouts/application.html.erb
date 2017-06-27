@@ -17,6 +17,9 @@
 
     <main>
       <div class="container">
+        <% if flash[:notice] %>
+          <%= javascript_tag "Materialize.toast('#{flash[:notice]}', 4000, 'green')" %>
+        <% end %>
         <%= yield %>
       </div>
     </main>
