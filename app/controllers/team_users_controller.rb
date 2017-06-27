@@ -17,9 +17,11 @@ class TeamUsersController < ApplicationController
   def destroy
     authorize! :destroy, @team_user
     @team_user.destroy
-
+    flash[:notice] = "Você saiu do time #{@team_user.team.slug}" 
+    
     respond_to do |format|
       format.json { render json: true }
+      format.html { redirect_to root_path }
     end
   end
 

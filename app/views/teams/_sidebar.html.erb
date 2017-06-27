@@ -4,7 +4,7 @@
          <span class="team_title"><%= @team.slug %></span>
          <% if can? :destroy, @team %>
          <a class="right team_icon remove_team" href="#">
-         <i class="material-icons" id="<%= @team.id %>">settings</i>
+           <i class="material-icons" id="<%= @team.id %>">settings</i>
          </a>
          <% end %>
       </div>
@@ -91,6 +91,9 @@
    </li>
    <li>
       <div class="divider"></div>
+      <% if cannot? :destroy, @team %>
+        <%= link_to "Sair do Time", team_user_path(id: current_user.id, team_id: @team.id), :confirm => 'Tem certeza que deseja sair do time?', method: :delete, class: "center" %>
+      <% end %>
    </li>
 </ul>
 
