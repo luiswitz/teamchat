@@ -26,8 +26,8 @@
 
     <!-- logged partials -->
     <% if current_user %>
-      <%= render "teams/add_modal" %>
       <% if @team %>
+        <%= render "teams/add_modal" %>
         <%= render "teams/remove_modal" %>
         <%= render "team_users/add_modal" %>
         <%= render "team_users/remove_modal" %>
