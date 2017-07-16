@@ -2,12 +2,15 @@
   <div class="modal-content">
     <div class="row">
       <%= form_tag("team_users", :method => :post, class: "col s12 add_user_form") do %>
+      <%#= form_for [@team, TeamUser.new] do |f| %>
         <div class="row">
           <div class="col s12">
             <h4>Add a User</h4>
           </div>
           <div class="input-field col s12">
             <%= hidden_field(:team_user, :team_id) %>
+            <%#= f.text_field :email, placeholder: "E-mail", required: true %>
+            <%#= f.submit "Invite", class: "btn right" %>
             <%= text_field(:team_user, :email) %>
             <%= label_tag(:email, "User Email") %>
             <%= submit_tag("Add User", class: "btn right") %>
