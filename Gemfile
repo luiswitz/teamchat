@@ -20,7 +20,6 @@ gem 'cancancan'
 gem 'materialize-sass'
 gem 'material_icons'
 gem 'redis'
-gem 'devise_invitable', '~> 1.7.0'
 
 group :test do
   gem "factory_girl_rails"
