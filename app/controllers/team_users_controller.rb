@@ -32,6 +32,7 @@ class TeamUsersController < ApplicationController
   end
 
   def team_user_params
-    params.require(:team_user).permit(:email, :team_id)
+    user = User.find_by(email: params[:team_user][:email])
+    params.require(:team_user).permit(:team_id).merge(user_id: user.id)
   end
 end
