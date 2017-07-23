@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20170718144519) do
 
   create_table "invitations", force: :cascade do |t|
     t.integer  "team_id"
-    t.integer  "user_id"
+    t.string   "user_email"
     t.integer  "invited_by_user_id"
     t.string   "token"
     t.datetime "accepted_at"

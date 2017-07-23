@@ -10,7 +10,7 @@ $(document).on 'turbolinks:load', ->
         dataType: 'json',
         data: {
           invitation: {
-            email: $('#invitation_email').val()
+            user_email: $('#invitation_user_email').val()
             team_id: $('#invitation_team_id').val()
           }
         }
