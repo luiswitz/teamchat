@@ -8,7 +8,7 @@ RSpec.describe Invitation, type: :model do
     end
 
     it "cannot be valid without an user" do
-      @invitation.user = nil
+      @invitation.user_email = nil
       expect(@invitation).to_not be_valid
     end
     

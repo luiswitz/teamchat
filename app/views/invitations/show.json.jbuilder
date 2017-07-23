@@ -1,1 +1,1 @@
-json.extract! @invitation, :user, :team_id
+json.extract! @invitation, :user_email, :team_id

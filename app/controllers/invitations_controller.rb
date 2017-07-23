@@ -1,4 +1,5 @@
 class InvitationsController < ApplicationController
+  before_action :set_invitation, only: [:accept]
 
   def create
     @invitation = Invitation.new(invitation_params)
@@ -15,17 +16,24 @@ class InvitationsController < ApplicationController
     end
   end
 
+
+  def accept
+    @invitation.accept
+    @invitation.save
+    @team = @invitation.team
+    user = User.find_by(email: @invitation.user_email)
+    @team.users << user
+    @team.save
+  end
+
   private
 
+  def set_invitation
+    @invitation = Invitation.find_by(token: params[:token], user_email: current_user.email)
+  end
+
   def invitation_params
-    email = params[:invitation][:email]
-    user = User.find_by(email: email)
-    if !user
-      password = SecureRandom.base58(32)
-      user = User.new(email: email, password: password, password_confirmation: password)
-      user.save!
-    end
-    params.require(:invitation).permit(:team_id, :email).merge(user_id: user.id) 
+    params.require(:invitation).permit(:team_id, :user_email) 
   end
 
 end
