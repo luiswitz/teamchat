@@ -18,12 +18,15 @@ class InvitationsController < ApplicationController
 
 
   def accept
-    @invitation.accept
-    @invitation.save
-    @team = @invitation.team
-    user = User.find_by(email: @invitation.user_email)
-    @team.users << user
-    @team.save
+    if @invitation
+      @invitation.accept
+      @invitation.save
+      @team = @invitation.team
+      @team.users << @invitation.get_user
+      @team.save
+    else
+      redirect_to :root, notice: "It is not a valid invitation"
+    end
   end
 
   private
@@ -33,7 +36,7 @@ class InvitationsController < ApplicationController
   end
 
   def invitation_params
-    params.require(:invitation).permit(:team_id, :user_email) 
+    params.require(:invitation).permit(:team_id, :user_email)
   end
 
 end
