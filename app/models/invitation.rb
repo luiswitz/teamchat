@@ -1,6 +1,6 @@
 class Invitation < ApplicationRecord
   after_create :send_mail
-  
+
   has_secure_token
   belongs_to :invited_by_user, :class_name => :User
   belongs_to :team
@@ -11,9 +11,17 @@ class Invitation < ApplicationRecord
     !!User.find_by(email: self.user_email)
   end
 
+  def accepted?
+    !!self.accepted_at and self.token.nil?
+  end
 
   def accept
     self.accepted_at = DateTime.now
+    self.token = nil
+  end
+
+  def get_user
+    User.find_by(email: self.user_email)
   end
 
   def send_mail
